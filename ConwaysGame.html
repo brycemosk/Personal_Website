@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Conway's Game of Life</title>
+<link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+  <div class="backgroundConway">
+  <ul class="topbar">
+  <li class="barElement"><a class="active" href="index.html">Home</a></li>
+  <li class="barElement"><a href="#Class">Class</a></li>
+  <li class="barElement"><a href="#Project">Project</a></li>
+  <li class="barElement"><a href="#Finished">Finished Game</a></li>
+</ul>
+<hr></hr>
+<h1 id="Class">The Class</h1>
+<hr></hr>
+<p>
+As a First Year Engineering student at the University of Pittsburgh, all freshmen students are required to take the same courses
+regardless of major. One of the courses I was required to take was Introduction to Engineering Computing. This course covered
+MATLAB as well as the C programming language and was structured such that every student was a part of a group
+to work on projects and homework with. Throughout the course, we were assigned two group projects, and one of those projects
+was to create Conway's Game of Life with the MATLAB programming language and display some statistics to the user afterwards.
+</p>
+<hr></hr>
+<h1 id="Project">The Project</h1>
+<hr></hr>
+<p>
+Conway's Game of Life is a cellular automaton which has an end state only effected by the initial state of the game.
+Now, that didn't really make much sense to me at first either. The way I would describe the game would be a grid
+simulation that is entirely based off of its starting point. The game revolves around giving the program an initial amount of
+alive and dead cells, and then simply watching the patterns change according to these four rules:
+<ol>
+  <li>Any live cell with fewer than two live neighbors dies, as if by underpopulation.</li>
+  <li>Any live cell with two or three live neighbors lives on to the next generation.</li>
+  <li>Any live cell with more than three live neighbors dies, as if by overpopulation.</li>
+  <li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li>
+</ol>
+</p>
+<p>
+Conway had proposed that no starting pattern could grow indefintely, and every initial state would lead to a finite
+number of living cells in the end. This conjecture ended up being false, however, when Bill Gosper figured out an initial
+condition which would create an endless amount of living cells (Gosper's Glider).
+</p>
+<hr></hr>
+<h1 id="Finished">The Finished Product</h1>
+<hr></hr>
+<h2>The finished product looks like this:</h2>
+<iframe style="padding-right:20px" width="450" height="250" src="https://www.youtube.com/embed/Aq51GfPmD54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br></br>
+<br></br>
+<br></br>
+<font size="3">This is merely a demonstration of the game and is not the code used for my group project.
+If you are interested in the source code my group created for this project, I have included it <a href="ConwaySourceCode.txt" target="_blank">here</a>. </font>
+<br></br>
+<br></br>
+<br></br>
+<p>
+This project was hard at first glance, but after delving deeper with my group, it ended up being more than manageable for my team.
+If you're someone who is interested in testing their programming abilities I would recommend this project.
+</p>
+<hr></hr>
+<h1> Other Projects </h1>
+<hr></hr>
+<div class="projects" style="">
+<h2 align="middle"><a class="projects" href="index.html" target="_blank">Personal Website </a></h2>
+<h2 align="middle"><a class="projects" href="MagicMirror.html" target="_blank"> Magic Mirror </a></h2>
+</div>
+<hr></hr>
+<div class="row">
+    <ul class="row">
+        <li> Location: <a target="_blank" href="https://www.google.com/maps/place/Chicago,+IL/@41.8333925,-88.0121478,10z/data=!3m1!4b1!4m5!3m4!1s0x880e2c3cd0f4cbed:0xafe0a6ad09c0c000!8m2!3d41.8781136!4d-87.6297982"> Chicago, IL</a></li>
+        <li> Phone Number: <a href="tel:630-670-5758"> 630-670-5758 </a></li>
+        <li> Email: <a href="mailto:brycemosk26@gmail.com">brycemosk26@gmail.com </a></li>
+    </ul>
+</div>
+</div>
+</body>
+</html>

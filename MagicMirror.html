@@ -5,21 +5,23 @@
 <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
+  <div class="backgroundMirror">
   <ul class="topbar">
   <li class="barElement"><a class="active" href="index.html">Home</a></li>
   <li class="barElement"><a href="#Idea">Idea</a></li>
   <li class="barElement"><a href="#Build">Build</a></li>
+  <li class="barElement"><a href="#Modules">Modules</a></li>
   <li class="barElement"><a href="#Finished">Finished Mirror</a></li>
 </ul>
 <hr></hr>
 <h1 id="Idea">The Idea</h1>
 <hr></hr>
 <p>
-This idea started when I was browsing reddit a week or two before fathers day. Like most 19 year olds, I didn't know what I was going to get
-my dad for fathers day yet. I stumbled across a post of someone who had just finished making a magic/smart mirror.
+This idea started when I was browsing Reddit a week or two before Father's Day. Like most 19 year olds, I didn't know what I was going to get
+my dad for Father's Day yet. I stumbled across a post of someone who had just finished making a Magic/Smart Mirror.
 It seemed really cool, so I decided to do a little more reading about the project.
 The list of items needed for this project was suprisngly small for what I was expecting.
-It was only:
+It was only: </p>
   <ul>
     <li>A Piece of Acrylic</li>
     <li>A Monitor</li>
@@ -27,6 +29,7 @@ It was only:
     <li>A USB Mouse and Keyboard</li>
     <li>A Wood Frame</li>
   </ul>
+<p>
 All of these things could be easily obtained through Amazon, and I was looking to do some type of EE/CS project over summer anyways so why not make the Magic Mirror my dad's present?
 </p>
 <hr></hr>
@@ -34,8 +37,71 @@ All of these things could be easily obtained through Amazon, and I was looking t
 <hr></hr>
 <p>
   Once I got all of the parts listed above shipped to my house, I started putting things together.
-  First, I unboxed the raspberry pi, hooked it up to my monitor and downloaded the Raspian Operating System.
+  First, I unboxed the Raspberry Pi, hooked it up to my monitor and downloaded the Raspian Operating System.
   Once the operating system was installed, I manuvered my way over to the open source software for the <a target="_blank" href="https://magicmirror.builders/">Magic Mirror</a> project.
+  After a quick pull of the software onto the Raspberry Pi, I was ready to get started configuring the project for my father.
+  <br/>
+  <br/>
+  The default layout looked like this:
+  <br/>
+  <img class="center" src="Initial.jpeg" height="400" width="500" align="middle"></img>
+  <br/>
+  This looks good, but not good enough. There's so many more things that can fit on this screen.
 </p>
+<hr></hr>
+<h1 id="Modules">Third-Party Modules</h1>
+<hr></hr>
+<p>
+  After I got the initial layout up, I went right to the forums to see what kinds of third-party modules people had created thus far.
+  There are TONS of modules to look at, and out of all of them (Yes I actually went through all of them)
+  I found some really great ones to add to the project.
+</p>
+<p>
+  In order, here are my favorite/most useful third-party modules that I used:
+</p>
+  <ol>
+    <li><a href="https://github.com/Jopyth/MMM-Remote-Control" target="_blank">MMM-Remote-Control</a> - This module allows the use of a webpage to control what appears on your monitor. It also allows for remote control shutdown of the Magic Mirror. This module is perfect for altering the display on command, and definitely the most impactful of all of these modules.</li>
+    <li><a href="https://forum.magicmirror.builders/topic/8459/mmm-bob-ross-for-putting-a-happy-little-painting-up-on-your-mirror/2" target="_blank">MMM-BobRoss</a> - This module displays photos of different works of art from artist Bob Ross. Also has a video feature that is voice activated.</li>
+    <li><a href="https://forum.magicmirror.builders/topic/4297/mmm-myscoreboard" target="_blank"> MMM-MyScoreBoard</a> - This module cycles through professional sports games. Can be configured to display teams that you specifically want.</li>
+    <li><a href="https://forum.magicmirror.builders/topic/1265/mmm-dailybibleverse" target="_blank">MMM-DailyBibleVerse</a> - This module displays the daily bible verse from <a target="_blank" href="https://www.biblegateway.com/"> biblegateway.com</a>.</li>
+    <li><a href="https://forum.magicmirror.builders/topic/4209/mmm-jeopardy" target="_blank">MMM-Jeapardy </a>- This module cycles through every single Jeapardy question and their respective answers.</li>
+    <li><a href="https://forum.magicmirror.builders/topic/10234/mmm-mystandings" target="_blank">MMM-MyStandings</a> - This module will display the standings for the NHL, MLB, NFL, and NBA. Can be configured to only include the leagues you want.</li>
+    <li><a href="https://github.com/mykle1/MMM-EARTH" target="_blank"> MMM-Earth</a> - This module shows live pictures of the Earth taken from the DSCOVR satellite.</li>
+    <li><a href="https://github.com/eouia/MMM-AVStock" target="_blank">MMM-AVStock </a>- This module will display stock tickers across the bottom of your mirror. Can be customized to display any stocks you like.</li>
+  </ol>
+<p>
+  These are just some of the hundreds of modules that you can add to a magic mirror. For example, I saw a module that would find the 10 closest gas stations to you and give you the gas prices of all of them.
+  I've also seen a module that can show you the local movie listings.
+</p>
+<hr></hr>
+<h1 id="Finished">The Finished Product</h1>
+<hr></hr>
+<p>
+  After adding in all of the third-party modules and messing around with the configuration, I was finally finished.
+  <br/>
+    <img class="center" src="Final.jpeg" height="400" width="400" align="middle"> </img>
+</p>
+<p>
+  I can say, without a doubt, it turned out even better than I expected. My dad thought so too when he got it.
+  If you or someone you know is interested in this project, take a look at <a href="https://www.magicmirrorcentral.com/complete-raspberry-pi-magic-mirror-tutorial/" target="_blank"> Magic Mirror Central </a>.
+   This website was what I ended up using to guide me along in the process of creating my Magic Mirror. It makes a great gift for any
+   holiday or occasion.
+</p>
+<hr></hr>
+<h1> Other Projects </h1>
+<hr></hr>
+<div class="projects" style="">
+<h2 align="middle"><a class="projects" href="index.html" target="_blank">Personal Website </a></h2>
+<h2 align="middle"><a class="projects" href="ConwaysGame.html" target="_blank"> Conway's Game of Life </a></h2>
+</div>
+<hr></hr>
+<div class="row">
+    <ul class="row">
+        <li> Location: <a target="_blank" href="https://www.google.com/maps/place/Chicago,+IL/@41.8333925,-88.0121478,10z/data=!3m1!4b1!4m5!3m4!1s0x880e2c3cd0f4cbed:0xafe0a6ad09c0c000!8m2!3d41.8781136!4d-87.6297982"> Chicago, IL</a></li>
+        <li> Phone Number: <a href="tel:630-670-5758"> 630-670-5758 </a></li>
+        <li> Email: <a href="mailto:brycemosk26@gmail.com">brycemosk26@gmail.com </a></li>
+    </ul>
+</div>
+</div>
 </body>
 </html>

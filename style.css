@@ -1,17 +1,24 @@
 body{
-  background-color:lightgrey;
+  background-color:lightblue;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+h1{
+  text-align: center;
 }
 hr{
   border: 1px solid blue;
 }
 p{
-
+  text-indent: 50px;
+  line-height: 25px;
+  font-size: 20px;
 }
 ul>li{
-
+  font-size: 20px;
 }
 ol>li{
-
+font-size: 20px;
 }
 ul.topbar{
   list-style-type: none;
@@ -41,4 +48,50 @@ li a:hover:not(.active) {
 li a.active {
   color: white;
   background-color: #4CAF50;
+}
+div.row {
+    background-color:black;
+    display: inline;
+}
+ul.row li{
+    display: inline;
+    font-size: 25px;
+}
+div.backgroundMirror{
+  background-color: white;
+  width: 1000px;
+  height: 2800px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+div.backgroundConway{
+  background-color: white;
+  width: 1000px;
+  height: 1520px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+a.projects{
+  font-size: 24px;
+}
+div.projects{
+  width: 250px;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+iframe{
+  float: left;
+}
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

@@ -1,0 +1,311 @@
+%bryce moskiewicz, melissa gallo, haley shaw
+%loop for whole program
+again = 'yes';
+while(again == 'yes')
+%check for filename
+file = '0';
+%variables
+iterate = 1;
+birth_array = [];
+death_array = [];
+population_array = [];
+total_births = 0;
+total_deaths = 0;
+total_generations = 0;
+%part 1
+while(exist(file) == 0)
+   file = input('Please enter a filename: ' ,'s');
+end
+%part 2
+generations = 0;
+while(generations < 1 | generations > 2500)
+    generations = input('Please enter the amount of generations you would like: ');
+end
+new_world = imread(file);
+counter = 0;
+initial_pop = initial_population(new_world);
+population_array(1) = initial_pop;
+[m,n] = size(new_world);
+holder = zeros(m,n);
+start = 1;
+%part 3
+fig = figure;
+display_world(new_world,fig,'World');
+%part 4
+while(start <= generations)
+    [new_world,births,deaths] = next_generation(new_world);
+    display_world(new_world,fig,'World');
+    total_births = total_births + births;
+    total_deaths = total_deaths + deaths;
+    birth_array(start) = births;
+    death_array(start) = deaths;
+    if(start<2500)
+    population_array(start+1) = population_array(start) + births - deaths;
+    end
+    counter = counter + 1;
+    if(counter == 2)
+    if(new_world == holder)
+        total_generations = start;
+        start = generations + 1;
+    end
+    holder = new_world;
+    counter = 0;
+    end
+    total_generations = total_generations + 1;
+    start = start + 1;
+end
+%part 5
+total_pop = population_array(total_generations);
+stats(birth_array,death_array,population_array);
+disp(['Total births: ' , num2str(total_births)]);
+disp(['Mean births: ' , num2str(mean(birth_array))]);
+disp(['Standard deviation births: ' , num2str(std(birth_array))]);
+disp(['Median births: ' , num2str(median(birth_array))]);
+
+disp(['Total deaths: ' , num2str(total_deaths)]);
+disp(['Mean deaths: ' , num2str(mean(death_array))]);
+disp(['Standard deviation deaths: ' , num2str(std(death_array))]);
+disp(['Median deaths: ' , num2str(median(death_array))]);
+
+%population array of all files
+if(iterate == 1)
+pop_final = [];
+names = {};
+end
+pop_final(iterate) = total_pop;
+disp(['Total population: ' , num2str(total_pop)]);
+%names corresponding to the files
+names{iterate}= file;
+
+again = input('would you like to re-run the program? (yes or nah): ', 's');
+iterate = iterate + 1;
+end
+%part 6
+mean_pop = mean(pop_final);
+std_pop = std(pop_final);
+disp(['The mean population overall is : ' , num2str(mean_pop)])
+disp(['The standard deviation of the population overall is : ' , num2str(std_pop)])
+[min_pop,loc_min] = min(pop_final);
+[max_pop,loc_max] = max(pop_final);
+file_min = names{loc_min};
+file_max = names{loc_max};
+disp(['The minimum population was in file : ',file_min,': and was : ' , num2str(min_pop)])
+disp(['The maximum population was in file: ',file_max,': and was : ' , num2str(max_pop)])
+
+
+----------------------------------------------------------------------------
+
+
+%bryce moskiewicz, melissa gallo, haley shaw
+function output1 = org_health(argument1,argument2)
+%wrapping around boundary
+%neighbors begins at the top left, and goes clockwise around the cell
+i = argument1(1);
+j = argument1(2);
+[maxi,maxj] = size(argument2);
+neighbors = {1,2,3,4,5,6,7,8};
+life = 0;
+%check corners
+if(i == 1 && j == 1)
+    neighbors{1} = [maxi,maxj];
+    neighbors{2} = [maxi,j];
+    neighbors{3} = [maxi,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [i+1,j+1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,maxj];
+    neighbors{8} = [i,maxj];   
+elseif(i == 1 && j == maxj)
+    neighbors{1} = [maxi,j-1];
+    neighbors{2} = [maxi,j];
+    neighbors{3} = [maxi,1];
+    neighbors{4} = [i,1];
+    neighbors{5} = [i+1,1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,j-1];
+    neighbors{8} = [i,j-1]; 
+elseif(i == maxi && j == 1)
+    neighbors{1} = [i-1,maxj];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [1,j+1];
+    neighbors{6} = [1,j];
+    neighbors{7} = [1,maxj];
+    neighbors{8} = [i,maxj]; 
+elseif(i == maxi && j == maxj)
+    neighbors{1} = [i-1,j-1];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,1];
+    neighbors{4} = [i,maxj];
+    neighbors{5} = [1,1];
+    neighbors{6} = [1,j];
+    neighbors{7} = [1,j-1];
+    neighbors{8} = [i,j-1]; 
+%check edges not including the corners
+elseif(i == 1)
+    neighbors{1} = [maxi,j-1];
+    neighbors{2} = [maxi,j];
+    neighbors{3} = [maxi,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [i+1,j+1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,j-1];
+    neighbors{8} = [i,j-1]; 
+elseif(i == maxi)
+    neighbors{1} = [i-1,j-1];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [1,j+1];
+    neighbors{6} = [1,j];
+    neighbors{7} = [1,j-1];
+    neighbors{8} = [i,j-1]; 
+elseif(j == 1)
+    neighbors{1} = [i-1,maxj];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [i+1,j+1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,maxj];
+    neighbors{8} = [i,maxj]; 
+elseif(j == maxj)
+    neighbors{1} = [i-1,j-1];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,1];
+    neighbors{4} = [i,1];
+    neighbors{5} = [i+1,1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,j-1];
+    neighbors{8} = [i,j-1]; 
+%consider the general case
+else
+    neighbors{1} = [i-1,j-1];
+    neighbors{2} = [i-1,j];
+    neighbors{3} = [i-1,j+1];
+    neighbors{4} = [i,j+1];
+    neighbors{5} = [i+1,j+1];
+    neighbors{6} = [i+1,j];
+    neighbors{7} = [i+1,j-1];
+    neighbors{8} = [i,j-1]; 
+end
+%figuring out life or death of cell
+for index = 1:8
+        holder = neighbors{index};
+        x = holder(1);
+        y = holder(2);
+        if(argument2(x,y) == 255)
+            life = life + 1;
+        end
+end
+        %condition 1
+    if(argument2(i,j) == 255 && life < 2)
+        output1 = 0;
+        %condition 2
+    elseif(argument2(i,j) == 255 && (life == 2 || life == 3))
+        output1 = 255;
+        %condition 3
+    elseif(argument2(i,j) == 255 && life > 3)
+        output1 = 0;
+        %condition 4
+    elseif(argument2(i,j) == 0 && life == 3)
+        output1 = 255;
+        %condition 5
+    elseif(argument2(i,j) == 0)
+        output1 = 0;
+    end
+end
+        
+
+-----------------------------------------------------------------------------
+
+
+%bryce moskiewicz, melissa gallo, haley shaw
+function [new_world,birth,death] = next_generation(argument1)
+%variables
+[maxi,maxj] = size(argument1);
+birth = 0;
+death = 0;
+before = 0;
+after = 0;
+status = 0;
+new_world = [];
+%loop through 2D array
+for i = 1:maxi
+    for j = 1:maxj
+        cell_index = [i,j];
+        before = argument1(i,j);
+        status = org_health(cell_index,argument1);
+        after = status;
+        %itterate death
+        if(before == 255 & after == 0)
+            death = death + 1;
+            %itterate birth
+        elseif(before == 0 & after == 255)
+            birth = birth + 1;
+        end 
+        %set cell to value determined by org_health
+        new_world(i,j) = status;
+    end
+end
+
+
+-----------------------------------------------------------------------------
+
+
+%bryce moskiewicz, haley shaw, melissa gallo
+function pop = initial_population(world)
+%variables
+[maxi,maxj] = size(world);
+%loop through array to find out the population
+pop = 0;
+for i = 1:maxi
+    for j = 1:maxj
+        status = world(i,j);
+        if(status == 255)
+            pop = pop + 1;
+        end
+    end
+end
+
+
+-----------------------------------------------------------------------------
+
+
+%bryce moskiewicz, melissa gallo, haley shaw
+function display_world(img,fig,titl)
+%resize image
+im = imresize(img,3);
+%display resized image in figure
+figure(fig)
+imshow(im);
+title(titl);
+end
+
+
+-----------------------------------------------------------------------------
+
+
+%bryce moskiewicz, melissa gallo, haley shaw
+function stats(birth_array,death_array,population_array)
+%variables
+x = [];
+for index = 1:length(birth_array)
+    x(index) = index;
+end
+%sort array for histogrm
+population_array_sorted = sort(population_array);
+%plot data in a subplot
+subplot(1,3,1)
+plot(x,birth_array,'r*')
+title('Birth vs. Generations')
+subplot(1,3,2)
+plot(x,death_array,'r*')
+title('Death vs. Generations')
+subplot(1,3,3)
+hist(population_array_sorted,10)
+title('Population Histogram')
+
+
+-----------------------------------------------------------------------------
